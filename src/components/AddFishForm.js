@@ -8,7 +8,7 @@ class AddFishForm extends React.Component {
 
   nameRef = React.createRef();
   priceRef = React.createRef();
-  availabilityRef = React.createRef();
+  statusRef = React.createRef();
   descRef = React.createRef();
   imageRef = React.createRef();
 
@@ -17,7 +17,7 @@ class AddFishForm extends React.Component {
     this.props.addFish({
       name: this.nameRef.value.value,
       price: this.priceRef.value.value,
-      availability: this.availabilityRef.value.value,
+      status: this.statusRef.value.value,
       desc: this.descRef.value.value,
       image: this.imageRef.value.value,
     });
@@ -28,8 +28,8 @@ class AddFishForm extends React.Component {
     return (
       <form className="fish-edit" onSubmit={this.AddFish}>
         <input name="name" ref={this.nameRef} type="text" placeholder="Fish Name" />
-        <input name="price" ref={this.priceRef} type="text" placeholder="Fish Price" />
-        <select name="availability" ref={this.availabilityRef}>
+        <input name="price" ref={this.priceRef} type="number" placeholder="Fish Price" />
+        <select name="status" ref={this.statusRef}>
           <option value="available">Fresh!</option>
           <option value="unavailable">Sold Out!</option>
         </select>
