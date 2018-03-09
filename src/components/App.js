@@ -4,10 +4,18 @@ import Order from './Order';
 import Inventory from './Inventory';
 
 class App extends React.Component {
-  constructor() {
-    super();
-    this.setState({ fishes: [] });
-  }
+  state = {
+    fishes: {},
+  };
+
+  addFish = fish => {
+    // copy fishes
+    const fishes = { ...this.state.fishes };
+    // set the new fish
+    fishes[`fish${Date.now()}`] = fish;
+    // update state
+    this.setState({ fishes });
+  };
 
   render() {
     return (
@@ -16,7 +24,7 @@ class App extends React.Component {
           <Header tagLine="Fresh Seafood Market" fishes={this.state.fishes} />
         </div>
         <Order />
-        <Inventory />
+        <Inventory addFish={this.addFish} />
       </div>
     );
   }
