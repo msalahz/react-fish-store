@@ -36,6 +36,17 @@ class App extends React.Component {
     this.setState({ order });
   };
 
+  deleteFromOrder = fishKey => {
+    // copy order state
+    const order = { ...this.state.order };
+    // if fishKey exists in the order set as null
+    if (fishKey in order) {
+      order[fishKey] = null;
+    }
+    // update order state
+    this.setState({ order });
+  };
+
   render() {
     return (
       <div className="catch-of-the-day">
@@ -46,7 +57,11 @@ class App extends React.Component {
             addToOrder={this.addToOrder}
           />
         </div>
-        <Order />
+        <Order
+          order={this.state.order}
+          fishes={this.state.fishes}
+          deleteFromOrder={this.deleteFromOrder}
+        />
         <Inventory
           addFish={this.addFish}
           loadSampleFishes={this.loadSampleFishes}
