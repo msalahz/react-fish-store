@@ -4,6 +4,16 @@
   "private": true,
   "devDependencies": {
     "concurrently": "3.5.1",
+    "eslint": "^4.9.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-prettier": "^2.6.0",
+    "eslint-plugin-react": "^7.4.0",
+    "prettier": "^1.11.1",
+    "react-app-rewire-eslint": "^0.2.3",
+    "react-app-rewired": "^1.5.0",
     "react-scripts": "1.1.1"
   },
   "dependencies": {
@@ -19,14 +29,14 @@
     "stylus": "0.54.5"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "watch":
-      "concurrently --names \"webpack, stylus\" --prefix name \"npm run start\" \"npm run styles:watch\"",
-    "build": "react-scripts build",
+    "start": "react-app-rewired start",
+    "watch": "concurrently --names \"webpack, stylus\" --prefix name \"npm run start\" \"npm run styles:watch\"",
+    "build": "react-app-rewired build",
     "eject": "react-scripts eject",
-    "styles":
-      "stylus -u autoprefixer-stylus ./src/css/style.styl -o ./src/css/style.css",
-    "styles:watch":
-      "stylus -u autoprefixer-stylus -w ./src/css/style.styl -o ./src/css/style.css"
+    "test": "react-app-rewired test — env=jsdom",
+    "styles": "stylus -u autoprefixer-stylus ./src/css/style.styl -o ./src/css/style.css",
+    "styles:watch": "stylus -u autoprefixer-stylus -w ./src/css/style.styl -o ./src/css/style.css",
+    "format": "prettier --trailing-comma es5 --single-quote --write 'src/*/*.js' 'src/*/!(node_modules)/**/*.js'",
+    "lint": "npm run format && eslint --fix --config .eslintrc.js src"
   }
 }
