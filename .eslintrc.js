@@ -88,7 +88,7 @@ module.exports = {
       {
         'trailingComma': 'es5',
         'singleQuote': true,
-        'printWidth': 120
+        'printWidth': 80
       }
     ],
     'jsx-a11y/href-no-hash': 'off',

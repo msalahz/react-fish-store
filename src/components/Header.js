@@ -18,14 +18,22 @@ const Header = props => (
       </h3>
     </header>
     <ul className="list-of-fishes">
-      {Object.keys(props.fishes).map(key => <SingleFishItem key={key} fish={props.fishes[key]} />)}
+      {Object.keys(props.fishes).map(key => (
+        <SingleFishItem
+          key={key}
+          fid={key}
+          fish={props.fishes[key]}
+          addToOrder={props.addToOrder}
+        />
+      ))}
     </ul>
   </Fragment>
 );
 
 Header.propTypes = {
   tagLine: PropTypes.string.isRequired,
-  fishes: PropTypes.array.isRequired,
+  fishes: PropTypes.object.isRequired,
+  addToOrder: PropTypes.func.isRequired,
 };
 
 export default Header;
