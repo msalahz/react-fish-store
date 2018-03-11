@@ -1,14 +1,33 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { Rebase } from 're-base';
 import Header from './Header';
 import Order from './Order';
 import Inventory from './Inventory';
 import SampleFishes from '../sample-fishes';
+import base from '../base';
 
 class App extends React.Component {
+  static propTypes = {
+    match: PropTypes.object.isRequired,
+  };
+
   state = {
     fishes: {},
     order: {},
   };
+
+  componentDidMount() {
+    const { params } = this.props.match;
+    this.ref = base.syncState(`${params.storeId}`, {
+      context: this,
+      state: 'fishes',
+    });
+  }
+
+  componentWillUnmount() {
+    Rebase.removeBinding(this.ref);
+  }
 
   loadSampleFishes = () => {
     this.setState({ fishes: SampleFishes });
