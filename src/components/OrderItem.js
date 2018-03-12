@@ -5,11 +5,15 @@ import { formatPrice } from '../helpers';
 class OrderItem extends React.Component {
   deleteFromOrder = () => this.props.deleteFromOrder(this.props.fid);
   render() {
-    if (!this.props.count) {
+    const { fid, fishes, order } = this.props;
+    const fish = fishes && fishes[fid];
+    const orderItem = order && order[fid];
+
+    if (!orderItem || !fish) {
       return null;
     }
 
-    if (this.props.fish.status === 'unavailable') {
+    if (fish.status === 'unavailable') {
       return (
         <li>
           <span>Fish is not available anymore</span>
@@ -21,12 +25,12 @@ class OrderItem extends React.Component {
       <li>
         <span>
           <span className="count">
-            <span>{this.props.count}</span>
-            {this.props.fish.name}
+            <span>{orderItem.count}</span>
+            {fish.name}
           </span>
           <button onClick={this.deleteFromOrder}>×</button>
         </span>
-        <span className="price">{formatPrice(this.props.fish.price)}</span>
+        <span className="price">{formatPrice(fish.price)}</span>
       </li>
     );
   }
@@ -34,13 +38,9 @@ class OrderItem extends React.Component {
 
 OrderItem.propTypes = {
   fid: PropTypes.string.isRequired,
-  fish: PropTypes.object.isRequired,
-  count: PropTypes.number,
+  fishes: PropTypes.object.isRequired,
+  order: PropTypes.object.isRequired,
   deleteFromOrder: PropTypes.func.isRequired,
-};
-
-OrderItem.defaultProps = {
-  count: 0,
 };
 
 export default OrderItem;
