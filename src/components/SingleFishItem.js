@@ -8,7 +8,7 @@ class SingleFishItem extends React.Component {
   };
 
   render() {
-    const { image, name, price, desc } = this.props.fish;
+    const { image, name, price, desc, status } = this.props.fish;
     return (
       <li className="menu-fish">
         <img src={image} alt={name} />
@@ -17,7 +17,9 @@ class SingleFishItem extends React.Component {
           <span className="price">{formatPrice(price)}</span>
         </h3>
         <p>{desc}</p>
-        <button onClick={this.addToOrder}>Add To Order</button>
+        <button onClick={this.addToOrder} disabled={status === 'unavailable'}>
+          {status === 'unavailable' ? 'Sold Out!' : 'Add To Order'}
+        </button>
       </li>
     );
   }
