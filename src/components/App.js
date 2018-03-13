@@ -23,7 +23,7 @@ class App extends React.Component {
     if (orderStorage) {
       this.setState({ order: orderStorage });
     }
-    this.ref = base.syncState(`${params.storeId}`, {
+    this.ref = base.syncState(`${params.storeId}/fishes`, {
       context: this,
       state: 'fishes',
     });
@@ -110,6 +110,7 @@ class App extends React.Component {
         />
         <Inventory
           fishes={this.state.fishes}
+          storeId={this.props.match.params.storeId}
           addFish={this.addFish}
           editFish={this.editFish}
           deleteFish={this.deleteFish}
