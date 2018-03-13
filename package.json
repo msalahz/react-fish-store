@@ -31,6 +31,8 @@
     "stylus": "0.54.5"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-app-rewired start",
     "watch": "concurrently --names \"webpack, stylus\" --prefix name \"npm run start\" \"npm run styles:watch\"",
     "build": "react-app-rewired build",
@@ -39,8 +41,6 @@
     "styles": "stylus -u autoprefixer-stylus ./src/css/style.styl -o ./src/css/style.css",
     "styles:watch": "stylus -u autoprefixer-stylus -w ./src/css/style.styl -o ./src/css/style.css",
     "format": "prettier --trailing-comma es5 --single-quote --write 'src/*/*.js' 'src/*/!(node_modules)/**/*.js'",
-    "lint": "npm run format && eslint --fix --config .eslintrc.js src",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "lint": "npm run format && eslint --fix --config .eslintrc.js src"
   }
 }
