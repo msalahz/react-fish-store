@@ -2,8 +2,6 @@
 
 ## This is a micro serverless distributed e commerce that allow hosting multiple fish stores with the ability to Create, Read, Update & Delete inventory items by store owner (First logged in user for a store is the owner by default ) and creating orders by adding fishes in realtime experience
 
---------------------
-
 ## Installation
 
 This application is utilizing  [Create React app](https://github.com/facebook/create-react-app)
