@@ -1,31 +1,34 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import SingleFishItem from './SingleFishItem';
+import Loading from './Loading';
 
 const Header = props => (
   <Fragment>
     <header className="top">
       <h1>
-        Catch
+        Fish
         <span className="ofThe">
-          <span className="of">Of</span>
-          <span className="the">The</span>
+          <span className="of" />
+          <span className="the" />
         </span>
-        Day
+        Store
       </h1>
       <h3>
         <span className="tagline"> {props.tagLine}</span>
       </h3>
     </header>
     <ul className="list-of-fishes">
-      {Object.keys(props.fishes).map(key => (
-        <SingleFishItem
-          key={key}
-          fid={key}
-          fish={props.fishes[key]}
-          addToOrder={props.addToOrder}
-        />
-      ))}
+      <Loading isLoading={Object.keys(props.fishes).length === 0}>
+        {Object.keys(props.fishes).map(key => (
+          <SingleFishItem
+            key={key}
+            fid={key}
+            fish={props.fishes[key]}
+            addToOrder={props.addToOrder}
+          />
+        ))}
+      </Loading>
     </ul>
   </Fragment>
 );
