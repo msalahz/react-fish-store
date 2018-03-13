@@ -11,5 +11,6 @@
   "static/media/haymaker-webfont.eot": "static/media/haymaker-webfont.4c3fb584.eot",
   "static/media/haymaker-webfont.svg": "static/media/haymaker-webfont.cf798e30.svg",
   "static/media/haymaker-webfont.ttf": "static/media/haymaker-webfont.e9535f20.ttf",
-  "static/media/haymaker-webfont.woff": "static/media/haymaker-webfont.751e5627.woff"
+  "static/media/haymaker-webfont.woff": "static/media/haymaker-webfont.751e5627.woff",
+  "start_url": "./index.html"
 }
