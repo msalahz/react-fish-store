@@ -15,6 +15,7 @@ class App extends React.Component {
   state = {
     fishes: {},
     order: {},
+    loading: true,
   };
 
   componentDidMount() {
@@ -26,6 +27,7 @@ class App extends React.Component {
     this.ref = base.syncState(`${params.storeId}/fishes`, {
       context: this,
       state: 'fishes',
+      then: () => this.setState({ loading: false }),
     });
   }
 
@@ -98,6 +100,7 @@ class App extends React.Component {
       <div className="catch-of-the-day">
         <div className="menu">
           <Header
+            loading={this.state.loading}
             tagLine="Fresh Seafood Market"
             fishes={this.state.fishes}
             addToOrder={this.addToOrder}

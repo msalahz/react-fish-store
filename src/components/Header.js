@@ -19,7 +19,7 @@ const Header = props => (
       </h3>
     </header>
     <ul className="list-of-fishes">
-      <Loading isLoading={Object.keys(props.fishes).length === 0}>
+      <Loading isLoading={props.loading}>
         {Object.keys(props.fishes).map(key => (
           <SingleFishItem
             key={key}
@@ -34,8 +34,9 @@ const Header = props => (
 );
 
 Header.propTypes = {
-  tagLine: PropTypes.string.isRequired,
+  loading: PropTypes.bool.isRequired,
   fishes: PropTypes.object.isRequired,
+  tagLine: PropTypes.string.isRequired,
   addToOrder: PropTypes.func.isRequired,
 };
 
