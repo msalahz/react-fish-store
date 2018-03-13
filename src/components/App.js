@@ -17,7 +17,7 @@ class App extends React.Component {
     order: {},
   };
 
-  componentWillMount() {
+  componentDidMount() {
     const { params } = this.props.match;
     const orderStorage = JSON.parse(localStorage.getItem(params.storeId));
     if (orderStorage) {
